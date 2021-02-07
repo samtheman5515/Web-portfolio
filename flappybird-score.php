@@ -5,8 +5,8 @@ if(isset($_GET["name"]) && isset($_GET["score"]) && isset($_GET["password"])){
 	if($conn->connect_error){
 		http_response_code(500);
 		die("Could not connect to database." . $conn->connect_error);
-
 	}
+	
 	$name = $_GET["name"];
 	$score = intval($_GET["score"]);
 	$password = hash("sha256", $_GET["password"]);
@@ -14,7 +14,8 @@ if(isset($_GET["name"]) && isset($_GET["score"]) && isset($_GET["password"])){
 	$q->bind_param("s", $name);
 	$q->execute();
 	$result=$q->get_result();
-	if(!empty($result) && $result->num_rows>0){
+	
+	if(!empty($result) && $result->num_rows > 0){
 		$row=$result->fetch_assoc();
 		$pwd=$row["password"];
 		if($password != $pwd){
@@ -52,22 +53,21 @@ if(isset($_GET["name"]) && isset($_GET["score"]) && isset($_GET["password"])){
 		}
 	} else {
 		$result=$conn->query("select * from HarryTrumanDorisDayRedChinaJohnnieRaySouthPacificWalterWinchellJ order by place desc limit 1");
-		if(!empty($result) && $result->num_rows>0){
-			$rank=$result->fetch_assoc()["place"]+1;	
+		if(!empty($result) && $result->num_rows > 0){
+			$rank=$result->fetch_assoc()["place"] + 1;	
 		}
 	}
-	$q= $conn->prepare("insert into HarryTrumanDorisDayRedChinaJohnnieRaySouthPacificWalterWinchellJ values (?, ?, ?, ?);");
-	try {
-
 	
+	$q = $conn->prepare("insert into HarryTrumanDorisDayRedChinaJohnnieRaySouthPacificWalterWinchellJ values (?, ?, ?, ?);");
+	try {
 		$q->bind_param("isis", $rank, $name, $score, $password);
 		$q->execute();
 	} catch(Exception $e){
 		die($e->getMessage());
 	}
 	$conn->close();
+	
 } else {
-
 	http_response_code(400);
 	die("Name and score must be definied.");
 }
