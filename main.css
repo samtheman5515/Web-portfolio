@@ -1,0 +1,64 @@
+ html {
+width: 75%;
+margin: auto;
+background: #e6e6e6
+}
+
+body {
+background: crimson;
+padding: 1.5em;
+font-size: 120%;
+}
+
+header {
+font-size: 120%; 
+margin: auto;
+background: #262626;
+font-family: sans-serif;
+color: white;
+padding: 0.5em;
+text-align: center;
+}
+
+header h2 {
+font-size: 110%;
+font-weight: normal
+
+}
+
+
+#lyrics {
+color: cyan;
+font-family: sans-serif;
+line-height: 120%;
+background: black;
+font-size: 18pt;
+width: 50%;
+padding: 1.2em;
+margin: auto;
+border-radius: 20px;
+}
+
+		
+
+table {
+border: 1px solid black;
+}
+
+th,td
+{
+padding: 6px ;
+}
+
+th{
+border-bottom: 1px solid black
+}
+table:nth-child(2){
+color: black;
+} 
+aside{
+width: 25%;
+float: right;
+padding-left: 3em;
+margin: auto;
+}
